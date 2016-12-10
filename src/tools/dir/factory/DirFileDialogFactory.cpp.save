@@ -1,0 +1,52 @@
+/***************************************************************
+ * Name:      DirFileDialogFactory.cpp
+ * Purpose:   Code for Fu(X) 2.0
+ * Author:    David Lecoconnier (david.lecoconnier@free.fr)
+ * Created:   2015-10-22
+ * Copyright: David Lecoconnier (http://www.getfux.fr)
+ * License:
+ **************************************************************/
+#include "DirFileDialogFactory.h"
+#include "DirFileDialogEvent.h"
+#include "RepeatedQuestionDialogEvent.h"
+
+using namespace tools::dir;
+
+/** @brief Constructor.
+ */
+DirFileDialogFactory::DirFileDialogFactory(wxPanel& parent) :
+    DirFileCommunicationFactory()
+    m_pare
+{
+    //ctor
+}
+
+/** @brief Destructor.
+ */
+DirFileDialogFactory::~DirFileDialogFactory()
+{
+    //dtor
+}
+
+/** @brief
+ *
+ * @return DirFileUserInterface*
+ *
+ */
+DirFileUserInterface* DirFileDialogFactory::createDirFileUser()
+{
+    return new DirFileDialogEvent;
+}
+
+/** @brief
+ *
+ * @return RepeatedQuestionInterface*
+ *
+ */
+RepeatedQuestionInterface* DirFileDialogFactory::createRepeatedQuestion()
+{
+    return new RepeatedQuestionDialogEvent;
+}
+
+
+

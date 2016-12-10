@@ -1,0 +1,13 @@
+#include "FileRenamingThread.h"
+
+using namespace tools::thread;
+
+FileRenamingThread::FileRenamingThread()
+{
+    //ctor
+}
+
+FileRenamingThread::~FileRenamingThread()
+{
+    //dtor
+}
