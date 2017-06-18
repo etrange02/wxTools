@@ -32,6 +32,12 @@ System::~System()
     //dtor
 }
 
+/** @brief Returns invalid characters on current OS.
+ * The invalid characters is based on Windows file system. It is on this
+ * I found more constraints.
+ * @return wxString
+ *
+ */
 wxString System::getUnauthorizedCharacterFile()
 {
     #ifdef __WXMSW__
@@ -39,16 +45,23 @@ wxString System::getUnauthorizedCharacterFile()
     #endif // __WXMSW__
 }
 
+/** @brief Creates a short cut on the current OS.
+ *
+ * @param shortcut const wxString&
+ * @param filename const wxString&
+ * @return bool
+ *
+ */
 bool System::createShortcut(const wxString& shortcut, const wxString& filename)
 {
     #ifdef __WXMSW__
-    bool resultat = false;
+    bool result = false;
     CoInitialize(NULL);
     IShellLink* pIShellLink = NULL;
     if (SUCCEEDED(CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (LPVOID *)&pIShellLink)))
     {
         IPersistFile* pIPersistFile = NULL;
-        wxString description = _T("Raccourci fichier .") + filename.AfterLast('.') + _T(" - Fu(X) 2.0");
+        wxString description = _T("Shortcut");
 
         // Vérifier si le raccourci existe déjà:
 
@@ -60,13 +73,13 @@ bool System::createShortcut(const wxString& shortcut, const wxString& filename)
         if (SUCCEEDED(pIShellLink->QueryInterface(IID_IPersistFile, (LPVOID *)&pIPersistFile)))
         {
             // Convertir le chemin en UNICODE:
-            WCHAR *chaine = new WCHAR[shortcut.Length()+2];
+            WCHAR *str = new WCHAR[shortcut.Length()+2];
 
-            MultiByteToWideChar(CP_ACP, 0, shortcut.mb_str(), -1, (LPWSTR)chaine, shortcut.Length()+1);
+            MultiByteToWideChar(CP_ACP, 0, shortcut.mb_str(), -1, (LPWSTR)str, shortcut.Length()+1);
             // Créer le raccourci:
-            resultat = pIPersistFile->Save(chaine, 1);
+            result = pIPersistFile->Save(str, 1);
 
-            delete[] chaine;
+            delete[] str;
             // Libérer l'interface IPersistFile:
             pIPersistFile->Release();
         }
@@ -75,7 +88,7 @@ bool System::createShortcut(const wxString& shortcut, const wxString& filename)
      pIShellLink->Release();
      // Fermer la librairie COM:
      CoUninitialize();
-     return !resultat;
+     return !result;
     #else
     return !symlink(filename.c_str(), shortcut.c_str());
     #endif // __WXMSW__

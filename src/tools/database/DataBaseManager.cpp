@@ -21,7 +21,7 @@ DataBaseManager::DataBaseManager() :
     tools::thread::SingleThreadManager(),
     m_database(NULL)
 {
-    if (m_initializingCounter == 0)
+    if (0 == m_initializingCounter)
         wxSQLite3Database::InitializeSQLite();
     ++m_initializingCounter;
 }
@@ -32,7 +32,7 @@ DataBaseManager::~DataBaseManager()
 {
     setDatabase(NULL);
     --m_initializingCounter;
-    if (m_initializingCounter == 0)
+    if (0 == m_initializingCounter)
         wxSQLite3Database::ShutdownSQLite();
 }
 

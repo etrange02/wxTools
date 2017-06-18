@@ -7,17 +7,14 @@
  * License:
  **************************************************************/
 #include "FileValidator.h"
+#include <tools/system/System.h>
 
 using namespace tools::validator;
 
 FileValidator::FileValidator(wxString* valPtr) :
     wxTextValidator(wxFILTER_EXCLUDE_CHAR_LIST, valPtr)
 {
-    #ifdef __WXMSW__
-    SetCharExcludes(_T("\\/:*?\"<>|")); // Windows
-    #else
-    SetCharExcludes(_T("/")); // Linux/Mac ?
-    #endif
+    SetCharExcludes(tools::system::System::getUnauthorizedCharacterFile());
 }
 
 FileValidator::~FileValidator()

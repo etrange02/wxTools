@@ -1,7 +1,7 @@
 #ifndef DATABASEOPENINGREQUEST_H
 #define DATABASEOPENINGREQUEST_H
 
-#include "DataBaseRequest.h"
+#include "tools/database/DataBaseRequest.h"
 
 class wxSQLite3Database;
 

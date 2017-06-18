@@ -16,7 +16,45 @@
 				<Compiler>
 					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include/contrib/include" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/lib/gcc_lib/mswu" />
+					<Add directory="$(#sqlite3.INCLUDE)" />
+					<Add directory="$(#wxsqlite3.INCLUDE)" />
 				</Compiler>
+				<Linker>
+					<Add library="$(#wxsqlite3.LIB)/libwxcode_msw$(WX_VER1)$(WX_VER2)$(AURD)_wxsqlite3.a" />
+					<Add library="$(#sqlite3.LIB)/sqlite3.a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_core.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_net.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_xml.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD).a" />
+					<Add library="libwxpng$(RD).a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_xrc.a" />
+					<Add library="libwxjpeg$(RD).a" />
+					<Add library="libwxzlib$(RD).a" />
+					<Add library="libwxregex$(AURD).a" />
+					<Add library="libwxexpat$(RD).a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_adv.a" />
+					<Add library="libkernel32.a" />
+					<Add library="libuser32.a" />
+					<Add library="libgdi32.a" />
+					<Add library="libcomdlg32.a" />
+					<Add library="libwinspool.a" />
+					<Add library="libwinmm" />
+					<Add library="libshell32.a" />
+					<Add library="libcomctl32.a" />
+					<Add library="libole32.a" />
+					<Add library="liboleaut32.a" />
+					<Add library="libuuid.a" />
+					<Add library="libodbc32.a" />
+					<Add library="libadvapi32.a" />
+					<Add library="libwsock32.a" />
+					<Add library="libopengl32.a" />
+					<Add library="libglu32.a" />
+					<Add library="$(#mingw.LIB)/libshlwapi.a" />
+					<Add library="$(#mingw.LIB)/libversion.a" />
+				</Linker>
 			</Target>
 			<Target title="WinRelease">
 				<Option output="lib/wxTools" prefix_auto="1" extension_auto="1" />
@@ -26,11 +64,47 @@
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include/contrib/include" />
+					<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/lib/gcc_lib/mswu" />
+					<Add directory="$(#sqlite3.INCLUDE)" />
+					<Add directory="$(#wxsqlite3.INCLUDE)" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="$(#wxsqlite3.LIB)/libwxcode_msw$(WX_VER1)$(WX_VER2)$(AURD)_wxsqlite3.a" />
+					<Add library="$(#sqlite3.LIB)/sqlite3.a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_core.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_net.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_xml.a" />
+					<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD).a" />
+					<Add library="libwxpng$(RD).a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_xrc.a" />
+					<Add library="libwxjpeg$(RD).a" />
+					<Add library="libwxzlib$(RD).a" />
+					<Add library="libwxregex$(AURD).a" />
+					<Add library="libwxexpat$(RD).a" />
+					<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_adv.a" />
+					<Add library="libkernel32.a" />
+					<Add library="libuser32.a" />
+					<Add library="libgdi32.a" />
+					<Add library="libcomdlg32.a" />
+					<Add library="libwinspool.a" />
+					<Add library="libwinmm" />
+					<Add library="libshell32.a" />
+					<Add library="libcomctl32.a" />
+					<Add library="libole32.a" />
+					<Add library="liboleaut32.a" />
+					<Add library="libuuid.a" />
+					<Add library="libodbc32.a" />
+					<Add library="libadvapi32.a" />
+					<Add library="libwsock32.a" />
+					<Add library="libopengl32.a" />
+					<Add library="libglu32.a" />
+					<Add library="$(#mingw.LIB)/libshlwapi.a" />
+					<Add library="$(#mingw.LIB)/libversion.a" />
 				</Linker>
 			</Target>
 			<Environment>
@@ -57,11 +131,6 @@
 			<Add option="-D__GNUWIN32__" />
 			<Add option="-D__WXMSW__" />
 			<Add option="-DwxUSE_UNICODE" />
-			<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include" />
-			<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include/contrib/include" />
-			<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/lib/gcc_lib/mswu" />
-			<Add directory="${SQLITE3}/include" />
-			<Add directory="${WXSQLITE3}/include" />
 			<Add directory="include" />
 			<Add directory="include/tools" />
 			<Add directory="include/tools/database" />
@@ -72,6 +141,7 @@
 			<Add directory="include/tools/dir/operations" />
 			<Add directory="include/tools/validator" />
 			<Add directory="include/tools/stl" />
+			<Add directory="include/tools/system" />
 			<Add directory="include/tools/thread" />
 			<Add directory="include/tools/thread/manager" />
 		</Compiler>
@@ -79,42 +149,10 @@
 			<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/include" />
 		</ResourceCompiler>
 		<Linker>
-			<Add library="${WXSQLITE3}/lib/gcc_lib/libwxcode_msw$(WX_VER1)$(WX_VER2)$(AURD)_wxsqlite3.a" />
-			<Add library="${SQLITE3}/lib/sqlite3.a" />
-			<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_core.a" />
-			<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_net.a" />
-			<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD)_xml.a" />
-			<Add library="libwxbase$(WX_VER1)$(WX_VER2)$(AURD).a" />
-			<Add library="libwxpng$(RD).a" />
-			<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_xrc.a" />
-			<Add library="libwxjpeg$(RD).a" />
-			<Add library="libwxzlib$(RD).a" />
-			<Add library="libwxregex$(AURD).a" />
-			<Add library="libwxexpat$(RD).a" />
-			<Add library="libwxmsw$(WX_VER1)$(WX_VER2)$(AURD)_adv.a" />
-			<Add library="libkernel32.a" />
-			<Add library="libuser32.a" />
-			<Add library="libgdi32.a" />
-			<Add library="libcomdlg32.a" />
-			<Add library="libwinspool.a" />
-			<Add library="libwinmm" />
-			<Add library="libshell32.a" />
-			<Add library="libcomctl32.a" />
-			<Add library="libole32.a" />
-			<Add library="liboleaut32.a" />
-			<Add library="libuuid.a" />
-			<Add library="libodbc32.a" />
-			<Add library="libadvapi32.a" />
-			<Add library="libwsock32.a" />
-			<Add library="libopengl32.a" />
-			<Add library="libglu32.a" />
-			<Add library="${DIR_MINGW}/libshlwapi.a" />
-			<Add library="${DIR_MINGW}/libversion.a" />
 			<Add directory="$(WX_DIR)$(WX_VER1)$(WX_VER2)$(WX_VER3)$(WX_GL_VER)/lib/gcc_lib" />
-			<Add directory="${SQLITE3}/lib" />
-			<Add directory="${WXSQLITE3}/lib/gcc_lib" />
+			<Add directory="$(#sqlite3.LIB)" />
+			<Add directory="$(#wxsqlite3.LIB)" />
 		</Linker>
-		<Unit filename="include/tools/OS_Win.h" />
 		<Unit filename="include/tools/database/DBThreadEvent.h" />
 		<Unit filename="include/tools/database/DataBaseManager.h" />
 		<Unit filename="include/tools/database/DataBaseMetaData.h" />
@@ -140,6 +178,7 @@
 		<Unit filename="include/tools/dir/operations/OperationFile.h" />
 		<Unit filename="include/tools/stl/ThreadSafePriorityQueue.h" />
 		<Unit filename="include/tools/stl/ThreadSafeQueue.h" />
+		<Unit filename="include/tools/system/System.h" />
 		<Unit filename="include/tools/thread/FileDeletionThread.h" />
 		<Unit filename="include/tools/thread/IRunnable.h" />
 		<Unit filename="include/tools/thread/IThreadManager.h" />
@@ -151,7 +190,6 @@
 		<Unit filename="include/tools/thread/manager/MultiThreadManager.h" />
 		<Unit filename="include/tools/thread/manager/SingleThreadManager.h" />
 		<Unit filename="include/tools/validator/FileValidator.h" />
-		<Unit filename="src/tools/OS_Win.cpp" />
 		<Unit filename="src/tools/database/DBThreadEvent.cpp" />
 		<Unit filename="src/tools/database/DataBaseManager.cpp" />
 		<Unit filename="src/tools/database/DataBaseRequest.cpp" />
@@ -170,6 +208,7 @@
 		<Unit filename="src/tools/dir/operations/CutFile.cpp" />
 		<Unit filename="src/tools/dir/operations/DeleteFile.cpp" />
 		<Unit filename="src/tools/dir/operations/OperationFile.cpp" />
+		<Unit filename="src/tools/system/System.cpp" />
 		<Unit filename="src/tools/thread/FileDeletionThread.cpp" />
 		<Unit filename="src/tools/thread/Runnable.cpp" />
 		<Unit filename="src/tools/thread/ThreadFactory.cpp" />
